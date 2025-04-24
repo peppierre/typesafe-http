@@ -1,0 +1,44 @@
+{
+  "name": "@peppierre/typesafe-http-angular",
+  "version": "19.0.0",
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "peerDependencies": {
+    "@angular/common": "^19.2.0",
+    "@angular/core": "^19.2.0",
+    "fp-ts": "^2.16.10",
+    "io-ts": "^2.2.22",
+    "rxjs": "~7.8.0"
+  },
+  "sideEffects": false,
+  "jest": {
+    "preset": "jest-preset-angular",
+    "setupFilesAfterEnv": [
+      "<rootDir>/setup.jest.ts"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/dist/"
+    ],
+    "modulePaths": [
+      "<rootDir>/projects/typesafe-http/src/"
+    ],
+    "moduleNameMapper": {
+      "typesafe-http": "<rootDir>/projects/typesafe-http/src/$1"
+    },
+    "moduleDirectories": [
+      "node_modules",
+      "projects/typesafe-http/src"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "roots": [
+      "projects/typesafe-http"
+    ],
+    "testRegex": ".spec.ts$"
+  }
+}

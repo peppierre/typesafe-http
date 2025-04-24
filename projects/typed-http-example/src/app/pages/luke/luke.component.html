@@ -1,0 +1,7 @@
+@let character = character$ | async;
+
+<section class="character-card">
+    <h1>{{ character?.name }}</h1>
+    <div class="character-detail">{{ character?.description }}</div>
+    <img class="character-image" [src]="character?.image" alt="{{ character?.name }}" />
+</section>
