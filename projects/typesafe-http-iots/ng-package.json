@@ -1,6 +1,6 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../dist/typesafe-http",
+  "dest": "../../dist/typesafe-http-iots",
   "lib": {
     "entryFile": "src/public-api.ts"
   }

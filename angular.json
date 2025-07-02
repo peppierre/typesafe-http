@@ -3,23 +3,24 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "typesafe-http": {
+    "typesafe-http-iots": {
       "projectType": "library",
-      "root": "projects/typesafe-http",
-      "sourceRoot": "projects/typesafe-http/src",
+      "root": "projects/typesafe-http-iots",
+      "sourceRoot": "projects/typesafe-http-iots/src",
       "prefix": "lib",
+      "name": "@peppierre/typesafe-http-iots",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/typesafe-http/ng-package.json"
+            "project": "projects/typesafe-http-iots/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/typesafe-http/tsconfig.lib.prod.json"
+              "tsConfig": "projects/typesafe-http-iots/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/typesafe-http/tsconfig.lib.json"
+              "tsConfig": "projects/typesafe-http-iots/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"

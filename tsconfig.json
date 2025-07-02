@@ -22,7 +22,7 @@
       "node"
     ],
     "paths": {
-      "typesafe-http": ["./dist/typesafe-http"]
+      "typesafe-http-iots": ["./dist/typesafe-http-iots"]
     }
   },
   "angularCompilerOptions": {

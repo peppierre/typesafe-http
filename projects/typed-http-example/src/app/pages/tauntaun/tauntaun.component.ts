@@ -2,7 +2,7 @@ import { AsyncPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import * as iots from 'io-ts';
 import { Observable } from 'rxjs';
-import { TypesafeHttpService } from 'typesafe-http';
+import { TypesafeHttpService } from '@peppierre/typesafe-http-iots';
 
 const SPECIES = iots.type({
   _id: iots.string,

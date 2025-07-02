@@ -13,7 +13,7 @@ Before adding this package to your Angular app, please consider followings:
 
 To install package into you Angular app, use the regular command:
 
-`npm install @peppierre/typesafe-http-angular@latest`
+`npm install @peppierre/typesafe-http-iots`
 
 ## Usage
 
@@ -58,7 +58,7 @@ And use it, e.g. in a component:
 ```Typescript
 import { Component, inject } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TypesafeHttpService } from '@peppierre/typesafe-http-angular';
+import { TypesafeHttpService } from '@peppierre/typesafe-http-iots';
 
 @Component({
   selector: 'app-vehicle',

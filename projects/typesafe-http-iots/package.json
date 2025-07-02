@@ -1,6 +1,6 @@
 {
-  "name": "@peppierre/typesafe-http-angular",
-  "version": "19.0.0",
+  "name": "@peppierre/typesafe-http-iots",
+  "version": "1.0.0",
   "dependencies": {
     "tslib": "^2.3.0"
   },
@@ -22,14 +22,14 @@
       "<rootDir>/dist/"
     ],
     "modulePaths": [
-      "<rootDir>/projects/typesafe-http/src/"
+      "<rootDir>/projects/typesafe-http-iots/src/"
     ],
     "moduleNameMapper": {
-      "typesafe-http": "<rootDir>/projects/typesafe-http/src/$1"
+      "typesafe-http-iots": "<rootDir>/projects/typesafe-http-iots/src/$1"
     },
     "moduleDirectories": [
       "node_modules",
-      "projects/typesafe-http/src"
+      "projects/typesafe-http-iots/src"
     ],
     "moduleFileExtensions": [
       "js",
@@ -37,7 +37,7 @@
       "ts"
     ],
     "roots": [
-      "projects/typesafe-http"
+      "projects/typesafe-http-iots"
     ],
     "testRegex": ".spec.ts$"
   }
