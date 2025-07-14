@@ -1,7 +1,0 @@
-@let species = species$ | async;
-
-<section class="species-card">
-    <h1>{{ species?.name }}</h1>
-    <div class="species-detail">{{ species?.description }}</div>
-    <img class="species-image" [src]="species?.image" alt="{{ species?.name }}" />
-</section>
