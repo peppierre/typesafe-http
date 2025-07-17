@@ -1,0 +1,5 @@
+<section class="vehicle-card">
+    <h1>{{ (vehicle$ | async)?.name }}</h1>
+    <div class="vehicle-detail">{{ (vehicle$ | async)?.description }}</div>
+    <img class="vehicle-image" [src]="(vehicle$ | async)?.image" alt="{{ (vehicle$ | async)?.name }}" />
+</section>
