@@ -72,10 +72,10 @@ $ cd sandbox-v{major-version}
 $ npm run ng -- generate application sandbox-app
 $ npm run ng -- generate library typesafe-http-iots
 ```
-2. Remove newly created `sandbox-v{major-version}/projects/typesafe-http-iots`
-3. Create symlink to library
+2. Remove content of newly created `sandbox-v{major-version}/projects/typesafe-http-iots`
+3. Copy content of library
 ```bash
-$ ln -s ../library/projects/typesafe-http-iots ./projects
+$ cp -R ../library/projects/typesafe-http-iots/ ./projects/typesafe-http-iots
 ```
 4. Delete all content of `sandbox-v{major-version}/projects/sandbox-app/src/`
 5. Copy content of previous version sandbox
