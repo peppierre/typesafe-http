@@ -1,0 +1,5 @@
+<section class="character-card">
+    <h1>{{ (character$ | async)?.name }}</h1>
+    <div class="character-detail">{{ (character$ | async)?.description }}</div>
+    <img class="character-image" [src]="(character$ | async)?.image" alt="{{ (character$ | async)?.name }}" />
+</section>
