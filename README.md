@@ -61,7 +61,7 @@ Contributions are welcome! Please follow these steps:
 3. Commit your changes and push the branch.
 4. Submit a pull request.
 
-### Supporting new Angular version
+### Adding support to new Angular version
 
 Following steps required to have sandbox app for a new Angular version:
 
@@ -72,43 +72,30 @@ $ cd sandbox-v{major-version}
 $ npm run ng -- generate application sandbox-app
 $ npm run ng -- generate library typesafe-http-iots
 ```
-2. Remove content of newly created `sandbox-v{major-version}/projects/typesafe-http-iots`
-3. Copy content of library
-```bash
-$ cp -R ../library/projects/typesafe-http-iots/ ./projects/typesafe-http-iots
-```
-4. Delete all content of `sandbox-v{major-version}/projects/sandbox-app/src/`
-5. Copy content of previous version sandbox
+2. Delete all content of `sandbox-v{major-version}/projects/sandbox-app/src/`
+3. Copy content of previous version sandbox
 ```bash
 $ cp -R ../sandbox-v{prev-major-version}/projects/sandbox-app/src/ ./projects/sandbox-app/src
 ```
+4. Remove content of newly created `sandbox-v{major-version}/projects/typesafe-http-iots`
+5. Copy content of library
+```bash
+$ cp -R ../library/projects/typesafe-http-iots/ ./projects/typesafe-http-iots
+```
 6. Follow instructions provided on [Angular Update Guide](https://angular.dev/update-guide)
-7. Add major version number of Angular to `/sandbox-v{major-version}/projects/typesafe-http-iots/package.json` and update version of RxJs.
+7. Add major version number of Angular to `/sandbox-v{major-version}/projects/typesafe-http-iots/package.json`.
 E.g. 
 ```json
 {
    ...
    "peerDependencies": {
-      "@angular/common": "~16.0.0" | "~17.0.0",
-      "@angular/core": "~16.0.0" | "~17.0.0",
+      "@angular/common": "~16.0.0" || "~17.0.0",
+      "@angular/core": "~16.0.0" || "~17.0.0",
       ...
-      "rxjs": "~6.5.3 | ~7.4.0"
    },
 }
 ```
-8. Replace `script` section in `/sandbox-v{major-version}/package.json` with following lines:
-```json
-{
-   ...
-   "scripts": {
-      "ng": "ng",
-      "start": "ng serve sandbox-app",
-      "build": "ng build typesafe-http-iots"
-   },
-   ...
-}
-```
-9. Extend `tsconfig.json`
+8. Extend `/sandbox-v{major-version}/tsconfig.json`
 ```json
 {
   "compilerOptions": {
@@ -122,11 +109,94 @@ E.g.
    }
 }
 ```
-10. Add following lines to `/sandbox-v{major-version}/.gitignore`
+9. Replace `script` section in `/sandbox-v{major-version}/package.json` with following lines:
+```json
+{
+   ...
+   "scripts": {
+      "ng": "ng",
+      "start": "ng serve sandbox-app",
+      "build": "ng build typesafe-http-iots"
+   },
+   ...
+}
+```
+10. Add following packages to `/sandbox-v{major-version}/package.json`
+```
+    "fp-ts": "^2.16.10",
+    "io-ts": "^2.2.22",
+```
+11. Install packages to sandbox
+```bash
+$ npm install
+```
+12. Add following lines to `/sandbox-v{major-version}/.gitignore`
 ```
 # Typesafe HTTP
 projects/typesafe-http-iots
 ```
+
+### Testing new Angular version
+
+```bash
+cd sandbox-v{major-version}
+npm run build
+npm run start
+```
+
+After running these commands, check new application in browser.
+
+### Updating library sources accordingly
+
+#### library/package.json
+
+Add newly supported Angular version to this file. E.g. after adding `v17`, `dependencies` and `peerDependencies` would look like this:
+
+```json
+{
+   ...
+   "dependencies": {
+      ...
+      "@angular/animations": "^16.0.0 || ~17.0.0",
+      "@angular/common": "^16.0.0 || ~17.0.0",
+      "@angular/compiler": "^16.0.0 || ~17.0.0",
+      "@angular/core": "^16.0.0 || ~17.0.0",
+      "@angular/forms": "^16.0.0 || ~17.0.0",
+      "@angular/platform-browser": "^16.0.0 || ~17.0.0",
+      "@angular/platform-browser-dynamic": "^16.0.0 || ~17.0.0",
+      "@angular/router": "^16.0.0 || ~17.0.0",
+      ...
+   }
+   ...
+   "peerDependencies": {
+      ...
+      "@angular-devkit/build-angular": "^16.0.0 || ~17.0.0",
+      "@angular/cli": "~16.0.0 || ~17.0.0",
+      "@angular/compiler-cli": "^16.0.0 || ~17.0.0",
+      ...
+      "ng-packagr": "^16.0.0 || ~17.0.0"
+      ...
+   }
+}
+```
+
+#### library/projects/typesafe-http-iots/package.json
+
+Similarly, add relevant version number to this file as well.
+
+```json
+{
+   ...
+   "peerDependencies": {
+      ...
+      "@angular/common": "~16.0.0 || ~17.0.0",
+      "@angular/core": "~16.0.0 || ~17.0.0"
+      ...
+   }
+}
+```
+
+Please note that library itself depends on `rxjs` but this dependency is a transitional one. Angular version determines RxJs library version as well and required version of RxJs would be installed as a part of Angular installation! Thus, no need to put any RxJs version number here.
 
 ## License
 
