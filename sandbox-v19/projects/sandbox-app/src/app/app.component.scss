@@ -1,0 +1,32 @@
+.nav {
+    display: flex;
+    flex-direction: row;
+    background-color:cornflowerblue;
+    color: aliceblue;
+    margin: 0;
+
+    li {
+        list-style: none;
+        padding: 1rem;
+
+        &:has(>a:hover) {
+            background-color: darkblue;
+        }
+
+        &:has(>a.active-link) {
+            background-color: dodgerblue;
+        }
+    }
+
+    a {
+        text-decoration: none;
+        color: aliceblue;
+    }
+    a:visited {
+        color: aliceblue;
+    }
+}
+
+.content {
+    padding: 2rem;
+}
