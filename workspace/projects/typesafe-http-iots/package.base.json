@@ -1,0 +1,19 @@
+{
+  "name": "@peppierre/typesafe-http-iots",
+  "version": "1.0.0",
+  "author": "PePPierre <peppierre@gmail.com>",
+  "description": "Type-safe HTTP client for Angular using io-ts and fp-ts",
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "http",
+    "typescript",
+    "iots",
+    "fp-ts"
+  ],
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "peerDependencies": {},
+  "sideEffects": false
+}
