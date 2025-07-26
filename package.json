@@ -1,0 +1,21 @@
+{
+  "name": "@peppierre/typesafe-http",
+  "version": "1.0.0",
+  "author": "PePPierre <peppierre@gmail.com>",
+  "description": "Type-safe HTTP client libraries for Angular using various runtime type checking libraries",
+  "keywords": [
+    "angular",
+    "http",
+    "typescript"
+  ],
+  "scripts": {
+    "ng": "ng",
+    "pre-switchenv": "rm -rf node_modules && rm -rf dist && rm package-lock.json",
+    "post-switchenv": "npm install",
+    "switchenv:ng16": "npm run pre-switchenv && node scripts/prepare-version-specific-package.js --npmTag ng16 && npm run post-switchenv",
+    "switchenv:ng17": "npm run pre-switchenv && node scripts/prepare-version-specific-package.js --npmTag ng17 && npm run post-switchenv",
+    "switchenv:ng18": "npm run pre-switchenv && node scripts/prepare-version-specific-package.js --npmTag ng18 && npm run post-switchenv",
+    "switchenv:ng19": "npm run pre-switchenv && node scripts/prepare-version-specific-package.js --npmTag ng19 && npm run post-switchenv",
+    "switchenv:ng20": "npm run pre-switchenv && node scripts/prepare-version-specific-package.js --npmTag ng20 && npm run post-switchenv"
+  }
+}
