@@ -1,0 +1,21 @@
+{
+  "name": "@peppierre/typesafe-http",
+  "version": "1.0.0",
+  "author": "PePPierre <peppierre@gmail.com>",
+  "description": "Type-safe HTTP client libraries for Angular using various runtime type checking libraries",
+  "keywords": [
+    "angular",
+    "http",
+    "typescript"
+  ],
+  "scripts": {
+    "ng": "ng",
+    "pre-prepws": "cd ./workspace && rm -rf ./node_modules && rm -rf ./dist && rm ./package-lock.json",
+    "post-prepws": "cd ./workspace && npm install && cd ..",
+    "prepws:ng16": "npm run pre-prepws && node scripts/prepare-version-specific-package.js --npmTag ng16 && npm run post-prepws",
+    "prepws:ng17": "npm run pre-prepws && node scripts/prepare-version-specific-package.js --npmTag ng17 && npm run post-prepws",
+    "prepws:ng18": "npm run pre-prepws && node scripts/prepare-version-specific-package.js --npmTag ng18 && npm run post-prepws",
+    "prepws:ng19": "npm run pre-prepws && node scripts/prepare-version-specific-package.js --npmTag ng19 && npm run post-prepws",
+    "prepws:ng20": "npm run pre-prepws && node scripts/prepare-version-specific-package.js --npmTag ng20 && npm run post-prepws"
+  }
+}

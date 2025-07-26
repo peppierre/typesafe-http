@@ -1,0 +1,60 @@
+{
+  "name": "@peppierre/typesafe-http",
+  "version": "1.0.0",
+  "author": "PePPierre <peppierre@gmail.com>",
+  "description": "Type-safe HTTP client libraries for Angular using various runtime type checking libraries",
+  "keywords": [
+    "angular",
+    "http",
+    "typescript"
+  ],
+  "scripts": {
+    "ng": "ng",
+    "build": "npm run build:lib",
+    "build:lib": "npm run build:lib:iots",
+    "build:lib:iots": "ng build typesafe-http-iots",
+    "lint": "npm run lint:lib",
+    "lint:lib": "npm run lint:lib:iots",
+    "lint:lib:iots": "ng lint typesafe-http-iots",
+    "test": "npm run test:single",
+    "test:single": "jest --coverage",
+    "test:watch": "jest --coverage --watch",
+    "publish:iots": "npm publish ./dist/typesafe-http-iots --access public"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "peerDependencies": {
+    "fp-ts": "^2.16.10",
+    "io-ts": "^2.2.22"
+  },
+  "sideEffects": false,
+  "jest": {
+    "preset": "jest-preset-angular",
+    "setupFilesAfterEnv": [
+      "<rootDir>/setup.jest.ts"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/dist/"
+    ],
+    "modulePaths": [
+      "<rootDir>/projects/typesafe-http-iots/src/"
+    ],
+    "moduleNameMapper": {
+      "typesafe-http-iots": "<rootDir>/projects/typesafe-http-iots/src/$1"
+    },
+    "moduleDirectories": [
+      "node_modules",
+      "projects/typesafe-http-iots/src"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "roots": [
+      "projects/typesafe-http-iots"
+    ],
+    "testRegex": ".spec.ts$"
+  }
+}

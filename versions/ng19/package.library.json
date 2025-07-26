@@ -1,0 +1,8 @@
+{
+  "peerDependencies": {
+    "@angular/core": ">=19.0.0 <20.0.0",
+    "@angular/common": ">=19.0.0 <20.0.0",
+    "fp-ts": "^2.16.10",
+    "io-ts": "^2.2.22"
+  }
+}

@@ -36,6 +36,7 @@ yarn-error.log
 /libpeerconnection.log
 testem.log
 /typings
+/ng-packagr
 
 # System files
 .DS_Store
@@ -43,3 +44,4 @@ Thumbs.db
 
 # Generated output from 'prepws:ngXX' script
 package-lock.json
+package.json
