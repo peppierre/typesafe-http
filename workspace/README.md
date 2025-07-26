@@ -8,6 +8,12 @@ Project goal is to provide an easy-to-use tool to Angular engineers to check HTT
 
 - **io-ts support**: relevant sources available in `library/projects/typesafe-http-iots` directory
 
+## Prerequisites
+
+- Node.js (v18 or higher)
+- npm (v9 or higher)
+- Angular CLI (v16)
+
 ## Installation
 
 1. Clone the repository:
