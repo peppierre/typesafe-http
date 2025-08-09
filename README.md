@@ -38,7 +38,7 @@ Contributions are welcome! Please follow these high-level steps:
 2. Remove `ngXX` directory and its content from `./versions` directory
 3. Update package version to next major version, both in `./package.json` and `./projects/typesafe-http-XXXXX/package.base.json`. Version numbers in these files must be kept in sync.
 
-## Improving library code
+### Improving library code
 
 1. Apply your changes in library or libraries under `/library/projects/` directory
 3. `npm run lint`
@@ -51,11 +51,16 @@ Contributions are welcome! Please follow these high-level steps:
    - to next build, when:
       - any fix applied on at least one of the libraries
 
-## Building a library
+### Building a library
 ```
 npm run prepws:nsXX
 cd library
 npm run build:lib
+```
+
+### Publishing a library
+```
+npm run publish:iots -- --tag ngXX
 ```
 
 ### Manual testing of library
