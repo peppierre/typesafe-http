@@ -1,0 +1,38 @@
+{
+  "root": true,
+  "ignorePatterns": [
+    "**/dist/**",
+    "**/out-tsc/**",
+    "**/*.generated.ts",
+    "**/*.ngtypecheck.ts"
+  ],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "project": ["tsconfig.json"],
+        "createDefaultProgram": true
+      },
+      "plugins": ["@typescript-eslint", "@angular-eslint"],
+      "extends": [
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates"
+      ],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "warn",
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@angular-eslint/component-class-suffix": ["error", { "suffixes": ["Component"] }]
+      }
+    },
+    {
+      "files": ["*.html"],
+      "plugins": ["@angular-eslint/template"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "rules": {
+        "@angular-eslint/template/banana-in-box": "error",
+        "@angular-eslint/template/eqeqeq": "error"
+      }
+    }
+  ]
+}

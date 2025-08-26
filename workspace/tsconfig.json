@@ -20,7 +20,7 @@
     "module": "ES2022",
     "useDefineForClassFields": false,
     "paths": {
-      "typesafe-http-iots": [
+      "@peppierre/typesafe-http-iots": [
         "dist/typesafe-http-iots"
       ]
     },

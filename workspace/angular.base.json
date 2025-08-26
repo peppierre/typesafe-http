@@ -30,16 +30,10 @@
             "lintFilePatterns": [
               "projects/typesafe-http-iots/**/*.ts",
               "projects/typesafe-http-iots/**/*.html"
-            ],
-            "eslintConfig": "projects/typesafe-http-iots/eslint.config.js"
+            ]
           }
         }
       }
     }
-  },
-  "cli": {
-    "schematicCollections": [
-      "angular-eslint"
-    ]
   }
 }

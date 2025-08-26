@@ -1,0 +1,18 @@
+{
+  "projects": {
+    "typesafe-http-iots": {
+      "architect": {
+        "lint": {
+          "options": {
+            "eslintConfig": "eslint.config.js"
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "schematicCollections": [
+      "angular-eslint"
+    ]
+  }
+}

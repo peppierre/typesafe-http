@@ -45,3 +45,6 @@ Thumbs.db
 # Generated output from 'prepws:ngXX' script
 package-lock.json
 package.json
+angular.json
+.eslintrc.json
+eslint.config.js

@@ -1,6 +1,6 @@
 {
   "name": "@peppierre/typesafe-http",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "PePPierre <peppierre@gmail.com>",
   "description": "Type-safe HTTP client libraries for Angular using various runtime type checking libraries",
   "keywords": [
@@ -10,12 +10,23 @@
   ],
   "scripts": {
     "ng": "ng",
-    "pre-prepws": "cd ./workspace && rm -rf ./node_modules && rm -rf ./dist && rm ./package-lock.json",
+    "remove:node-modules": "rm -rf ./workspace/node_modules",
+    "remove:dist": "rm -rf ./workspace/dist",
+    "remove:package-lock": "rm -rf ./workspace/package-lock.json",
+    "remove:eslint:rcjson": "rm -rf ./workspace/.eslintrc.json",
+    "remove:eslint:rcjs": "rm -rf ./workspace/.eslintrc.json",
+    "remove:eslint:config": "rm -rf ./workspace/eslint.config.js",
+    "remove:eslint": "npm run remove:eslint:rcjson && npm run remove:eslint:rcjs && npm run remove:eslint:config",
+    "remove:npm-cache": "npm cache clean --force",
+    "pre-prepws": "npm run remove:node-modules && npm run remove:dist && npm run remove:package-lock && npm run remove:eslint &&  npm run remove:npm-cache",
     "post-prepws": "cd ./workspace && npm install && cd ..",
     "prepws:ng16": "npm run pre-prepws && node scripts/prepare-version-specific-package.js --npmTag ng16 && npm run post-prepws",
     "prepws:ng17": "npm run pre-prepws && node scripts/prepare-version-specific-package.js --npmTag ng17 && npm run post-prepws",
     "prepws:ng18": "npm run pre-prepws && node scripts/prepare-version-specific-package.js --npmTag ng18 && npm run post-prepws",
     "prepws:ng19": "npm run pre-prepws && node scripts/prepare-version-specific-package.js --npmTag ng19 && npm run post-prepws",
     "prepws:ng20": "npm run pre-prepws && node scripts/prepare-version-specific-package.js --npmTag ng20 && npm run post-prepws"
+  },
+  "devDependencies": {
+    "lodash": "^4.17.21"
   }
 }
