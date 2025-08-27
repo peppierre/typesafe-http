@@ -34,6 +34,38 @@
           }
         }
       }
+    },
+    "typesafe-http-zod": {
+      "projectType": "library",
+      "root": "projects/typesafe-http-zod",
+      "sourceRoot": "projects/typesafe-http-zod/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/typesafe-http-zod/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/typesafe-http-zod/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/typesafe-http-zod/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/typesafe-http-zod/**/*.ts",
+              "projects/typesafe-http-zod/**/*.html"
+            ]
+          }
+        }
+      }
     }
   }
 }

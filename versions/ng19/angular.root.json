@@ -8,6 +8,15 @@
           }
         }
       }
+    },
+    "typesafe-http-zod": {
+      "architect": {
+        "lint": {
+          "options": {
+            "eslintConfig": "eslint.config.js"
+          }
+        }
+      }
     }
   },
   "cli": {

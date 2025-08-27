@@ -40,7 +40,8 @@ console.log(`- NPM Tag: ${npmTag}`);
 const rootDirectoryPath = path.normalize(path.join(__dirname, '..'));
 const workspaceDirectoryPath = path.normalize(path.join(rootDirectoryPath, 'workspace'));
 const versionDirectoryPath = path.normalize(path.join(rootDirectoryPath, 'versions', npmTag));
-const libraryDirectoryPath = path.normalize(path.join(workspaceDirectoryPath, 'projects', 'typesafe-http-iots'));
+const libraryIotsDirectoryPath = path.normalize(path.join(workspaceDirectoryPath, 'projects', 'typesafe-http-iots'));
+const libraryZodDirectoryPath = path.normalize(path.join(workspaceDirectoryPath, 'projects', 'typesafe-http-zod'));
 
 console.log('Altering root package.json with version-specific information...');
 const baseRootPackageJsonPath = path.join(workspaceDirectoryPath, 'package.base.json');
@@ -52,21 +53,34 @@ const updatedRootPackageJson = _.merge(baseRootPackageJson, versionedRootPackage
 
 fs.writeFileSync(path.join(workspaceDirectoryPath, 'package.json'), JSON.stringify(updatedRootPackageJson, null, 2), 'utf8');
 
-console.log('Altering library package.json with version-specific information...');
-const baseLibraryPackageJsonPath = path.join(libraryDirectoryPath, 'package.base.json');
-const versionedLibraryPackageJsonPath = path.join(versionDirectoryPath, 'package.library.json');
-const baseLibraryPackageJson = JSON.parse(fs.readFileSync(baseLibraryPackageJsonPath, 'utf8'));
-const versionedLibraryPackageJson = JSON.parse(fs.readFileSync(versionedLibraryPackageJsonPath, 'utf8'));
+console.log('Altering library package.jsons with version-specific information...');
+let updatedLibraryPackageJson;
 
-const updatedLibraryPackageJson = _.merge(
-  baseLibraryPackageJson,
-  versionedLibraryPackageJson,
+const baseLibraryIotsPackageJsonPath = path.join(libraryIotsDirectoryPath, 'package.base.json');
+const baseLibraryIotsPackageJson = JSON.parse(fs.readFileSync(baseLibraryIotsPackageJsonPath, 'utf8'));
+const versionedLibraryIotsPackageJsonPath = path.join(versionDirectoryPath, 'package.library.iots.json');
+const versionedLibraryIotsPackageJson = JSON.parse(fs.readFileSync(versionedLibraryIotsPackageJsonPath, 'utf8'));
+updatedLibraryPackageJson = _.merge(
+  baseLibraryIotsPackageJson,
+  versionedLibraryIotsPackageJson,
   {
-    version: `${baseLibraryPackageJson.version}-${npmTag}`
+    version: `${baseLibraryIotsPackageJson.version}-${npmTag}`
   }
 );
+fs.writeFileSync(path.join(libraryIotsDirectoryPath, 'package.json'), JSON.stringify(updatedLibraryPackageJson, null, 2), 'utf8');
 
-fs.writeFileSync(path.join(libraryDirectoryPath, 'package.json'), JSON.stringify(updatedLibraryPackageJson, null, 2), 'utf8');
+const baseLibraryZodPackageJsonPath = path.join(libraryZodDirectoryPath, 'package.base.json');
+const baseLibraryZodPackageJson = JSON.parse(fs.readFileSync(baseLibraryZodPackageJsonPath, 'utf8'));
+const versionedLibraryZodPackageJsonPath = path.join(versionDirectoryPath, 'package.library.zod.json');
+const versionedLibraryZodPackageJson = JSON.parse(fs.readFileSync(versionedLibraryZodPackageJsonPath, 'utf8'));
+updatedLibraryPackageJson = _.merge(
+  baseLibraryZodPackageJson,
+  versionedLibraryZodPackageJson,
+  {
+    version: `${baseLibraryZodPackageJson.version}-${npmTag}`
+  }
+);
+fs.writeFileSync(path.join(libraryZodDirectoryPath, 'package.json'), JSON.stringify(updatedLibraryPackageJson, null, 2), 'utf8');
 
 console.log('Altering root angular.json with version-specific information...');
 const baseRootAngularJsonPath = path.join(workspaceDirectoryPath, 'angular.base.json');

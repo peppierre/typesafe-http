@@ -1,0 +1,7 @@
+{
+  "peerDependencies": {
+    "@angular/core": ">=20.0.0 <21.0.0",
+    "@angular/common": ">=20.0.0 <21.0.0",
+    "zod": "^4.1.3"
+  }
+}
