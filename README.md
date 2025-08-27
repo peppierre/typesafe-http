@@ -7,6 +7,7 @@ Project goal is to provide an easy-to-use tool for Angular engineers to check HT
 ## Features
 
 - **io-ts support**: relevant sources available in `library/projects/typesafe-http-iots` directory
+- **zod support**: relevant sources available in `library/projects/typesafe-http-zod` directory
 
 ## Prerequisites
 
@@ -26,7 +27,7 @@ Contributions are welcome! Please follow these high-level steps:
 
 1. Create directory for major version in `./version` directory. Name must follow `ngXX` scheme where `XX` is major version number of Angular. E.g. for supporting Angular 20, it'd be `ng20`.
 2. Add `./version/ngXX/package.root.json`. File must contain all version specific part of final, distributable `package.json`. It must contain `dependencies` and `devDependencies` sections with all Angular packages ususally added to a new Angular project.
-3. Add `./version/ngXX/package.library.json` file to this directory. File must contain only `peerDependencies` section with `@angular/core` and `@angular/common` package. Version definitions of both packages must follow `>=XX.0.0 <YY.0.0` pattern, where `XX` is the current and `YY` is the next Angular version. E.g. `>=20.0.0 <21.0.0`.
+3. Add `./version/ngXX/package.library.iots.json` and `./version/ngXX/package.library.zod.json` files to this directory. Files must contain only `peerDependencies` section with `@angular/core` and `@angular/common` package. Version definitions of both packages must follow `>=XX.0.0 <YY.0.0` pattern, where `XX` is the current and `YY` is the next Angular version. E.g. `>=20.0.0 <21.0.0`.
 4. Add relevant `prepws:ngXX` script to repository's `./package.json`
 5. Update package version to next major version, both in `./package.json` and `./projects/typesafe-http-XXXXX/packege.base.json`. Version numbers in these files must be kept in sync.
 
