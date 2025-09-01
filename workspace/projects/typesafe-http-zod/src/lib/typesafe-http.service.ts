@@ -119,7 +119,11 @@ function generateCustomTypeErrorMessage(runtimeTypeName:  string, response: unkn
           '\tUnable to decode following value:\n' +
           `\t${ JSON.stringify(response) }\n\n` +
           'Following errors were found:\n' +
-          `${ z.prettifyError(error)}`;
+          `${ error.issues.map(
+            (error) => `${
+                `\t\t${ error.path.join('.') }: ${ error.message }`
+              }`
+          ).join('\n') }`;
 }
 
 function handleDecodeError(error: TypeError) {
