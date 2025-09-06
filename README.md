@@ -53,9 +53,22 @@ Contributions are welcome! Please follow these high-level steps:
       - any fix applied on at least one of the libraries
 
 ### Building a library
+
+**NOTE** that proper Node.js version must be prepared before library build started. Please check table below for reference versions:
+
+| Tagname | Node version |
+|--------:|-------------:|
+| `ng16` | 18.16.1 |
+| `ng17` | 18.16.1 |
+| `ng18` | 18.20.8 |
+| `ng19` | 18.20.8 |
+| `ng20` | 20.19.0 |
+
+Consider using NVM tool to smoothly switch from one version to another.
+
 ```
 npm run prepws:nsXX
-cd library
+cd workspace
 npm run build:lib
 ```
 
@@ -66,9 +79,34 @@ npm run publish:iots -- --tag ngXX
 
 ### Manual testing of library
 
-1. Create an app with required Angular version
-2. Include `dist` directory of built library, e.g. by using file system reference in your app's `package.json`
-3. Use your favorite API to check correctness of the library
+Minimalist sample apps included in repository, see `/sample-apps` directory.
+
+Here's a full script to manually test library changes across all supported Angular versions:
+
+```bash
+npm run prepws:ngXX
+cd workspace
+npm run lint:lib
+npm run test
+npm run build:lib
+rm -rf projects/sample-iots
+rm -rf projects/sample-zod
+npm run ng -- generate application sample-iots
+npm run ng -- generate application sample-zod
+rm -rf projects/sample-iots/src
+rm -rf projects/sample-zod/src
+cp -R ../sample-apps/iots/ projects/sample-iots
+cp -R ../sample-apps/zod/ projects/sample-zod
+npm run ng -- serve sample-iots
+ctrl-c
+npm run ng -- serve sample-zod
+ctrl-c
+cd ..
+```
+
+Run this script above on all available versions.
+
+**No NPM publish recommended until all versions are checked and work as expected!**
 
 ## License
 
