@@ -1,6 +1,6 @@
 {
   "name": "@peppierre/typesafe-http",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": "PePPierre <peppierre@gmail.com>",
   "description": "Type-safe HTTP client libraries for Angular using various runtime type checking libraries",
   "keywords": [
@@ -40,6 +40,9 @@
     "testPathIgnorePatterns": [
       "<rootDir>/node_modules/",
       "<rootDir>/dist/"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(.*\\.mjs$|@angular|rxjs|zone\\.js))"
     ],
     "modulePaths": [
       "<rootDir>/projects/typesafe-http-iots/src/",

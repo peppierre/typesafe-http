@@ -1,6 +1,6 @@
 {
   "name": "@peppierre/typesafe-http-zod",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "author": "PePPierre <peppierre@gmail.com>",
   "description": "Type-safe HTTP client for Angular using zod",
   "license": "MIT",

@@ -24,8 +24,10 @@ export class TauntaunComponent {
   private typesafeHttpService: TypesafeHttpService = inject(TypesafeHttpService);
 
   public species$: Observable<SpeciesType> = this.typesafeHttpService.get<SpeciesType>(
-    SPECIES,
-    'https://starwars-databank-server.vercel.app/api/v1/creatures/640b2f06b6a2a8104f0a0dad'
+    'https://starwars-databank-server.vercel.app/api/v1/creatures/640b2f06b6a2a8104f0a0dad',
+    {
+      runtimeType: SPECIES
+    }
   );
 
 }

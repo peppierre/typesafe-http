@@ -24,8 +24,10 @@ export class LukeComponent {
   private typesafeHttpService: TypesafeHttpService = inject(TypesafeHttpService);
 
   public character$: Observable<CharacterType> = this.typesafeHttpService.get<CharacterType>(
-    CHARACTER,
-    'https://starwars-databank-server.vercel.app/api/v1/characters/64292927021f17e13fbc2062'
+    'https://starwars-databank-server.vercel.app/api/v1/characters/64292927021f17e13fbc2062',
+    {
+      runtimeType: CHARACTER
+    }
   );
 
 }

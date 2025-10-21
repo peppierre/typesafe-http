@@ -69,8 +69,10 @@ export class VehiclaeComponent {
   private typesafeHttpService: TypesafeHttpService = inject(TypesafeHttpService);
 
   public vehicle$: Observable<VehicleType> = this.typesafeHttpService.get<VehicleType>(
-    VEHICLE,
-    'https://starwars-databank-server.vercel.app/api/v1/vehicles/6429291f021f17e13fbc1d43'
+    'https://starwars-databank-server.vercel.app/api/v1/vehicles/6429291f021f17e13fbc1d43',
+    {
+      runtimeType: VEHICLE
+    }
   );
 
 }
@@ -95,8 +97,10 @@ this.http.get<VehicleType>(
 ```Typescript
 // TypesafeHttpService variant
 this.typesafeHttpService.get<VehicleType>(
-   VEHICLE,
-   'https://starwars-databank-server.vercel.app/api/v1/vehicles/6429291f021f17e13fbc1d43'
+   'https://starwars-databank-server.vercel.app/api/v1/vehicles/6429291f021f17e13fbc1d43',
+    {
+      runtimeType: VEHICLE
+    }
 );    
 ```
 

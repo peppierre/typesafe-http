@@ -109,3 +109,23 @@ try {
 } catch (error) {
   console.log('No version-specific ESLint configuration (eslint.config.js) found, skipping copy.');
 }
+
+console.log('Copying version-relevant HttpClient to io-ts project...');
+try {
+  fs.copyFileSync(
+    path.join(versionDirectoryPath, 'http-options-base.type.ts'),
+    path.join(workspaceDirectoryPath, 'projects', 'typesafe-http-iots', 'src', 'lib', 'types', 'http-options-base.type.ts')
+  );
+} catch (error) {
+  console.log('No version-specific HttpClient (http-options-base.type.ts) found, skipping copy to io-ts project.');
+}
+
+console.log('Copying version-relevant HttpClient to zod project...');
+try {
+  fs.copyFileSync(
+    path.join(versionDirectoryPath, 'http-options-base.type.ts'),
+    path.join(workspaceDirectoryPath, 'projects', 'typesafe-http-zod', 'src', 'lib', 'types', 'http-options-base.type.ts')
+  );
+} catch (error) {
+  console.log('No version-specific HttpClient (http-options-base.type.ts) found, skipping copy to zod project.');
+}

@@ -1,3 +1,5 @@
 # Generated output from 'prepws:ngXX' script
 package-lock.json
 package.json
+
+http-options-base.type.ts
