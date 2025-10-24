@@ -80,10 +80,7 @@ export class VehiclaeComponent {
 
 ## API description
 
-Service's API is similar to `HttpClient`'s API with following changes:
-
-- arguments of wrapped method can be used in the same order but shifted right
-- first argument would be an zod runtime type (aka Decoder)
+Service's API is similar to `HttpClient`'s API with additional option value for runtime type. This runtime type is mandatory in case of generic call signature only.
 
 Here's a comparision of `HttpClient` and `TypesafeHttpService` examples for `get(...)` method explained:
 
