@@ -25,8 +25,5 @@
     "prepws:ng18": "npm run pre-prepws && node scripts/prepare-version-specific-package.js --npmTag ng18 && npm run post-prepws",
     "prepws:ng19": "npm run pre-prepws && node scripts/prepare-version-specific-package.js --npmTag ng19 && npm run post-prepws",
     "prepws:ng20": "npm run pre-prepws && node scripts/prepare-version-specific-package.js --npmTag ng20 && npm run post-prepws"
-  },
-  "devDependencies": {
-    "lodash": "^4.17.21"
   }
 }

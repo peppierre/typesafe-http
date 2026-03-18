@@ -6,8 +6,8 @@ Project goal is to provide an easy-to-use tool for Angular engineers to check HT
 
 ## Features
 
-- **io-ts support**: relevant sources available in `library/projects/typesafe-http-iots` directory
-- **zod support**: relevant sources available in `library/projects/typesafe-http-zod` directory
+- **io-ts support**: relevant sources available in `workspace/projects/typesafe-http-iots` directory
+- **zod support**: relevant sources available in `workspace/projects/typesafe-http-zod` directory
 
 ## Prerequisites
 
@@ -25,11 +25,30 @@ Contributions are welcome! Please follow these high-level steps:
 
 ### Adding support to new Angular version
 
-1. Create directory for major version in `./version` directory. Name must follow `ngXX` scheme where `XX` is major version number of Angular. E.g. for supporting Angular 20, it'd be `ng20`.
-2. Add `./version/ngXX/package.root.json`. File must contain all version specific part of final, distributable `package.json`. It must contain `dependencies` and `devDependencies` sections with all Angular packages ususally added to a new Angular project.
-3. Add `./version/ngXX/package.library.iots.json` and `./version/ngXX/package.library.zod.json` files to this directory. Files must contain only `peerDependencies` section with `@angular/core` and `@angular/common` package. Version definitions of both packages must follow `>=XX.0.0 <YY.0.0` pattern, where `XX` is the current and `YY` is the next Angular version. E.g. `>=20.0.0 <21.0.0`.
-4. Add relevant `prepws:ngXX` script to repository's `./package.json`
-5. Update package version to next major version, both in `./package.json` and `./projects/typesafe-http-XXXXX/packege.base.json`. Version numbers in these files must be kept in sync.
+1. Create directory for major version in `./versions` directory. Name must follow `ngXX` scheme where `XX` is major version number of Angular. E.g. for supporting Angular 20, it'd be `ng20`.
+2. Add `./versions/ngXX/package.json`. This is the complete workspace `package.json` for this Angular version. It must contain all Angular version-specific `dependencies`, `devDependencies`, and `scripts`.
+3. Add `./versions/ngXX/angular.json`. This is the complete Angular workspace configuration for this version.
+4. Add `./versions/ngXX/package.iots.json` and `./versions/ngXX/package.zod.json`. These are the complete `package.json` files for the io-ts and zod libraries respectively. The `peerDependencies` section must list `@angular/core` and `@angular/common` with versions following `>=XX.0.0 <YY.0.0` pattern, where `XX` is the current and `YY` is the next Angular version. E.g. `>=20.0.0 <21.0.0`.
+5. Add `./versions/ngXX/files.json`. This manifest declares **all** files that should be copied from the version directory into the workspace directory when `prepws:ngXX` runs. It must include entries for `package.json`, `angular.json`, the library package files, and any other version-specific files such as ESLint config, TypeScript types, test setup, spec files, and tsconfig overrides. It follows this format:
+   ```json
+   {
+     "copy": [
+       { "from": "eslint.config.js", "to": "eslint.config.js" },
+       { "from": "angular.json", "to": "angular.json" },
+       { "from": "package.json", "to": "package.json" },
+       { "from": "package.iots.json", "to": "projects/typesafe-http-iots/package.json" },
+       { "from": "package.zod.json", "to": "projects/typesafe-http-zod/package.json" },
+       { "from": "http-options-base.type.ts", "to": "projects/typesafe-http-iots/src/lib/types/http-options-base.type.ts" },
+       { "from": "http-options-base.type.ts", "to": "projects/typesafe-http-zod/src/lib/types/http-options-base.type.ts" }
+     ]
+   }
+   ```
+   - `from` is relative to the version directory.
+   - `to` is relative to the `workspace/` directory.
+   - Add an entry for every file that varies between Angular versions (ESLint config, TypeScript types file, test setup, spec files, tsconfig overrides, etc.).
+6. If the version introduces a new test runner (e.g. Vitest), add the corresponding `tsconfig.spec.json`, `tsconfig.spec.iots.json`, and `tsconfig.spec.zod.json` overrides to the version directory, register them in `files.json`, and configure the `architect.test` section in `angular.json` accordingly.
+7. Add relevant `prepws:ngXX` script to repository's `./package.json`.
+8. Update package version to next major version in `./package.json` only. The version is automatically propagated to each library's `package.json` right before its build step.
 
 ### Removing support of older Angular version
 
@@ -37,15 +56,15 @@ Contributions are welcome! Please follow these high-level steps:
 
 1. Remove relevant `prepws:ngXX` script from repository's `package.json`
 2. Remove `ngXX` directory and its content from `./versions` directory
-3. Update package version to next major version, both in `./package.json` and `./projects/typesafe-http-XXXXX/package.base.json`. Version numbers in these files must be kept in sync.
+3. Update package version to next major version in `./package.json` only. The version is automatically propagated to each library's `package.json` right before its build step.
 
 ### Improving library code
 
-1. Apply your changes in library or libraries under `/library/projects/` directory
+1. Apply your changes in library or libraries under `workspace/projects/` directory
 3. `npm run lint`
 4. `npm run test`
 5. Follow [Manual testing of library](#manual-testing-of-library) for each supported version to discover discrepancies
-6. Update package version as follows, both in `./package.json` and `./projects/typesafe-http-XXXXX/package.base.json`:
+6. Update package version in `./package.json` only (it is propagated automatically to each library's `package.json` right before its build step) as follows:
    - to next minor version, when:
       - new feature added to all libraries
       - new runtime-type-checker library support added
@@ -63,11 +82,12 @@ Contributions are welcome! Please follow these high-level steps:
 | `ng18` | 18.20.8 |
 | `ng19` | 18.20.8 |
 | `ng20` | 20.19.0 |
+| `ng21` | 20.19.0 |
 
 Consider using NVM tool to smoothly switch from one version to another.
 
 ```
-npm run prepws:nsXX
+npm run prepws:ngXX
 cd workspace
 npm run build:lib
 ```

@@ -3,3 +3,5 @@ package-lock.json
 package.json
 
 http-options-base.type.ts
+
+/typesafe-http-*/**/typesafe-http.service.*.spec.ts
