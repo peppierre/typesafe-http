@@ -1,0 +1,29 @@
+{
+  "copy": [
+    { "from": "eslint.config.js", "to": "eslint.config.js" },
+    { "from": "angular.json", "to": "angular.json" },
+    { "from": "package.json", "to": "package.json" },
+    { "from": "tsconfig.json", "to": "tsconfig.json" },
+    { "from": "tsconfig.spec.json", "to": "tsconfig.spec.json" },
+
+    { "from": "iots-package.json", "to": "projects/typesafe-http-iots/package.json" },
+    { "from": "http-options-base.type.ts", "to": "projects/typesafe-http-iots/src/lib/types/http-options-base.type.ts" },
+    { "from": "iots-typesafe-http.service.delete.spec.ts", "to": "projects/typesafe-http-iots/src/lib/typesafe-http.service.delete.spec.ts" },
+    { "from": "iots-typesafe-http.service.get.spec.ts", "to": "projects/typesafe-http-iots/src/lib/typesafe-http.service.get.spec.ts" },
+    { "from": "iots-typesafe-http.service.head.spec.ts", "to": "projects/typesafe-http-iots/src/lib/typesafe-http.service.head.spec.ts" },
+    { "from": "iots-typesafe-http.service.options.spec.ts", "to": "projects/typesafe-http-iots/src/lib/typesafe-http.service.options.spec.ts" },
+    { "from": "iots-typesafe-http.service.patch.spec.ts", "to": "projects/typesafe-http-iots/src/lib/typesafe-http.service.patch.spec.ts" },
+    { "from": "iots-typesafe-http.service.post.spec.ts", "to": "projects/typesafe-http-iots/src/lib/typesafe-http.service.post.spec.ts" },
+    { "from": "iots-typesafe-http.service.put.spec.ts", "to": "projects/typesafe-http-iots/src/lib/typesafe-http.service.put.spec.ts" },
+
+    { "from": "zod-package.json", "to": "projects/typesafe-http-zod/package.json" },
+    { "from": "http-options-base.type.ts", "to": "projects/typesafe-http-zod/src/lib/types/http-options-base.type.ts" },
+    { "from": "zod-typesafe-http.service.delete.spec.ts", "to": "projects/typesafe-http-zod/src/lib/typesafe-http.service.delete.spec.ts" },
+    { "from": "zod-typesafe-http.service.get.spec.ts", "to": "projects/typesafe-http-zod/src/lib/typesafe-http.service.get.spec.ts" },
+    { "from": "zod-typesafe-http.service.head.spec.ts", "to": "projects/typesafe-http-zod/src/lib/typesafe-http.service.head.spec.ts" },
+    { "from": "zod-typesafe-http.service.options.spec.ts", "to": "projects/typesafe-http-zod/src/lib/typesafe-http.service.options.spec.ts" },
+    { "from": "zod-typesafe-http.service.patch.spec.ts", "to": "projects/typesafe-http-zod/src/lib/typesafe-http.service.patch.spec.ts" },
+    { "from": "zod-typesafe-http.service.post.spec.ts", "to": "projects/typesafe-http-zod/src/lib/typesafe-http.service.post.spec.ts" },
+    { "from": "zod-typesafe-http.service.put.spec.ts", "to": "projects/typesafe-http-zod/src/lib/typesafe-http.service.put.spec.ts" }
+  ]
+}

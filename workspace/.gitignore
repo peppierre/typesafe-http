@@ -49,4 +49,5 @@ angular.json
 .eslintrc.json
 eslint.config.js
 setup.jest.ts
+tsconfig.json
 tsconfig.spec.json

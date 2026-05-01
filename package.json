@@ -24,6 +24,7 @@
     "prepws:ng17": "npm run pre-prepws && node scripts/prepare-version-specific-package.js --npmTag ng17 && npm run post-prepws",
     "prepws:ng18": "npm run pre-prepws && node scripts/prepare-version-specific-package.js --npmTag ng18 && npm run post-prepws",
     "prepws:ng19": "npm run pre-prepws && node scripts/prepare-version-specific-package.js --npmTag ng19 && npm run post-prepws",
-    "prepws:ng20": "npm run pre-prepws && node scripts/prepare-version-specific-package.js --npmTag ng20 && npm run post-prepws"
+    "prepws:ng20": "npm run pre-prepws && node scripts/prepare-version-specific-package.js --npmTag ng20 && npm run post-prepws",
+    "prepws:ng21": "npm run pre-prepws && node scripts/prepare-version-specific-package.js --npmTag ng21 && npm run post-prepws"
   }
 }

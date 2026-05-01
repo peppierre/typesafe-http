@@ -4,6 +4,7 @@
     { "from": "angular.json", "to": "angular.json" },
     { "from": "package.json", "to": "package.json" },
     { "from": "setup.jest.ts", "to": "setup.jest.ts" },
+    { "from": "tsconfig.json", "to": "tsconfig.json" },
     { "from": "tsconfig.spec.json", "to": "tsconfig.spec.json" },
     { "from": "package.iots.json", "to": "projects/typesafe-http-iots/package.json" },
     { "from": "package.zod.json", "to": "projects/typesafe-http-zod/package.json" },

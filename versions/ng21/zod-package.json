@@ -1,0 +1,21 @@
+{
+  "name": "@peppierre/typesafe-http-zod",
+  "author": "PePPierre <peppierre@gmail.com>",
+  "description": "Type-safe HTTP client for Angular using zod",
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "http",
+    "typescript",
+    "zod"
+  ],
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "peerDependencies": {
+    "@angular/common": "^>=21.0.0 <22.0.0",
+    "@angular/core": "^>=21.0.0 <22.0.0",
+    "zod": "^4.3.6"
+  },
+  "sideEffects": false
+}

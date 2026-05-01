@@ -1,0 +1,83 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "cli": {
+    "packageManager": "npm",
+    "schematicCollections": ["angular-eslint"]
+  },
+  "newProjectRoot": "projects",
+  "projects": {
+    "typesafe-http-iots": {
+      "projectType": "library",
+      "root": "projects/typesafe-http-iots",
+      "sourceRoot": "projects/typesafe-http-iots/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/typesafe-http-iots/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/typesafe-http-iots/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "./tsconfig.spec.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/typesafe-http-iots/**/*.ts",
+              "projects/typesafe-http-iots/**/*.html"
+            ],
+            "eslintConfig": "eslint.config.js"
+          }
+        }
+      }
+    },
+    "typesafe-http-zod": {
+      "projectType": "library",
+      "root": "projects/typesafe-http-zod",
+      "sourceRoot": "projects/typesafe-http-zod/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/typesafe-http-zod/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/typesafe-http-zod/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "./tsconfig.spec.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/typesafe-http-zod/**/*.ts",
+              "projects/typesafe-http-zod/**/*.html"
+            ],
+            "eslintConfig": "eslint.config.js"
+          }
+        }
+      }
+    }
+  }
+}
