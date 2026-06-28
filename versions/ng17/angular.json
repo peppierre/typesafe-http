@@ -12,7 +12,8 @@
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/typesafe-http-iots/ng-package.json"
+            "project": "projects/typesafe-http-iots/ng-package.json",
+            "compilationMode": "partial"
           },
           "configurations": {
             "production": {
@@ -44,7 +45,8 @@
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/typesafe-http-zod/ng-package.json"
+            "project": "projects/typesafe-http-zod/ng-package.json",
+            "compilationMode": "partial"
           },
           "configurations": {
             "production": {

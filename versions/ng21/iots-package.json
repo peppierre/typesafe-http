@@ -14,8 +14,8 @@
     "tslib": "^2.3.0"
   },
   "peerDependencies": {
-    "@angular/common": "^>=21.0.0 <22.0.0",
-    "@angular/core": "^>=21.0.0 <22.0.0",
+    "@angular/common": ">=16.0.0 <22.0.0",
+    "@angular/core": ">=16.0.0 <22.0.0",
     "fp-ts": "^2.16.11",
     "io-ts": "^2.2.22"
   },
