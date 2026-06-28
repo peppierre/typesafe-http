@@ -20,29 +20,6 @@ type JsonTypedOptionsBase<T> = JsonBodyOptionsBase & { runtimeType: iots.Type<T,
 type JsonEventsTypedOptionsBase<T> = JsonEventsOptionsBase & { runtimeType: iots.Type<T, unknown, unknown> };
 type JsonResponseTypedOptionsBase<T> = JsonResponseOptionsBase & { runtimeType: iots.Type<T, unknown, unknown> };
 
-// --- Aliases for Typed Options (Json) ---
-export type GetJsonTypedOptions<T> = JsonTypedOptionsBase<T>;
-export type DeleteJsonTypedOptions<T> = JsonTypedOptionsBase<T>;
-export type HeadJsonTypedOptions<T> = JsonTypedOptionsBase<T>;
-export type OptionsJsonTypedOptions<T> = JsonTypedOptionsBase<T>;
-export type PatchJsonTypedOptions<T> = JsonTypedOptionsBase<T>;
-export type PostJsonTypedOptions<T> = JsonTypedOptionsBase<T>;
-export type PutJsonTypedOptions<T> = JsonTypedOptionsBase<T>;
-export type GetJsonEventsTypedOptions<T> = JsonEventsTypedOptionsBase<T>;
-export type DeleteJsonEventsTypedOptions<T> = JsonEventsTypedOptionsBase<T>;
-export type HeadJsonEventsTypedOptions<T> = JsonEventsTypedOptionsBase<T>;
-export type OptionsJsonEventsTypedOptions<T> = JsonEventsTypedOptionsBase<T>;
-export type PatchJsonEventsTypedOptions<T> = JsonEventsTypedOptionsBase<T>;
-export type PostJsonEventsTypedOptions<T> = JsonEventsTypedOptionsBase<T>;
-export type PutJsonEventsTypedOptions<T> = JsonEventsTypedOptionsBase<T>;
-export type GetJsonResponseTypedOptions<T> = JsonResponseTypedOptionsBase<T>;
-export type DeleteJsonResponseTypedOptions<T> = JsonResponseTypedOptionsBase<T>;
-export type HeadJsonResponseTypedOptions<T> = JsonResponseTypedOptionsBase<T>;
-export type OptionsJsonResponseTypedOptions<T> = JsonResponseTypedOptionsBase<T>;
-export type PatchJsonResponseTypedOptions<T> = JsonResponseTypedOptionsBase<T>;
-export type PostJsonResponseTypedOptions<T> = JsonResponseTypedOptionsBase<T>;
-export type PutJsonResponseTypedOptions<T> = JsonResponseTypedOptionsBase<T>;
-
 // --- Aliases for Specific HTTP Verbs ---
 // ArrayBuffer
 export type GetArrayBufferOptions = ArrayBufferBodyOptionsBase;
@@ -144,3 +121,26 @@ export type OptionsJsonResponseOptions = JsonResponseOptionsBase;
 export type PatchJsonResponseOptions = JsonResponseOptionsBase;
 export type PostJsonResponseOptions = JsonResponseOptionsBase;
 export type PutJsonResponseOptions = JsonResponseOptionsBase;
+
+// --- Aliases for Typed Options (Json) ---
+export type GetJsonTypedOptions<T> = JsonTypedOptionsBase<T>;
+export type DeleteJsonTypedOptions<T> = JsonTypedOptionsBase<T>;
+export type HeadJsonTypedOptions<T> = JsonTypedOptionsBase<T>;
+export type OptionsJsonTypedOptions<T> = JsonTypedOptionsBase<T>;
+export type PatchJsonTypedOptions<T> = JsonTypedOptionsBase<T>;
+export type PostJsonTypedOptions<T> = JsonTypedOptionsBase<T>;
+export type PutJsonTypedOptions<T> = JsonTypedOptionsBase<T>;
+export type GetJsonEventsTypedOptions<T> = JsonEventsTypedOptionsBase<T>;
+export type DeleteJsonEventsTypedOptions<T> = JsonEventsTypedOptionsBase<T>;
+export type HeadJsonEventsTypedOptions<T> = JsonEventsTypedOptionsBase<T>;
+export type OptionsJsonEventsTypedOptions<T> = JsonEventsTypedOptionsBase<T>;
+export type PatchJsonEventsTypedOptions<T> = JsonEventsTypedOptionsBase<T>;
+export type PostJsonEventsTypedOptions<T> = JsonEventsTypedOptionsBase<T>;
+export type PutJsonEventsTypedOptions<T> = JsonEventsTypedOptionsBase<T>;
+export type GetJsonResponseTypedOptions<T> = JsonResponseTypedOptionsBase<T>;
+export type DeleteJsonResponseTypedOptions<T> = JsonResponseTypedOptionsBase<T>;
+export type HeadJsonResponseTypedOptions<T> = JsonResponseTypedOptionsBase<T>;
+export type OptionsJsonResponseTypedOptions<T> = JsonResponseTypedOptionsBase<T>;
+export type PatchJsonResponseTypedOptions<T> = JsonResponseTypedOptionsBase<T>;
+export type PostJsonResponseTypedOptions<T> = JsonResponseTypedOptionsBase<T>;
+export type PutJsonResponseTypedOptions<T> = JsonResponseTypedOptionsBase<T>;

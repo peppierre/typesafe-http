@@ -1,7 +1,6 @@
 import { ZodType } from 'zod';
 import { HttpOptionsBase } from './http-options-base.type';
 
-
 // --- Generalized Body/Events/Response Options ---
 type ArrayBufferBodyOptionsBase = HttpOptionsBase<'arraybuffer'> & { observe?: 'body' | undefined };
 type ArrayBufferEventsOptionsBase = HttpOptionsBase<'arraybuffer'> & { observe: 'events' };
