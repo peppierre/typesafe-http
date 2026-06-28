@@ -93,8 +93,25 @@ npm run build:lib
 ```
 
 ### Publishing a library
+
+Before publishing, manually update the `version` field in the built library's `package.json` files to append the Angular version postfix:
+
+```bash
+# Append -ngXX (e.g. "-ng21") to version in dist output
+sed -i '' 's/"version": "2.0.0"/"version": "2.0.0-ngXX"/' workspace/dist/typesafe-http-iots/package.json
 ```
+
+Then publish with the Angular version tag:
+
+```bash
+cd workspace
 npm run publish:iots -- --tag ngXX
+```
+
+Once the **latest Angular version** package is live, move the `latest` tag to it:
+
+```bash
+npm dist-tag add @peppierre/typesafe-http-iots@2.0.0-ngXX latest
 ```
 
 ### Manual testing of library
