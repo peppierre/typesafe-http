@@ -4,7 +4,7 @@
 
 Before adding this package to your Angular app, please consider followings:
 
-1. Expected Angular version is `18+`
+1. Expected Angular version is `16+`
 1. `zod` library must be a dependency of your app:
 
    `npm install zod`

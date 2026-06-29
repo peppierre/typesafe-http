@@ -28,7 +28,7 @@ Contributions are welcome! Please follow these high-level steps:
 1. Create directory for major version in `./versions` directory. Name must follow `ngXX` scheme where `XX` is major version number of Angular. E.g. for supporting Angular 20, it'd be `ng20`.
 2. Add `./versions/ngXX/package.json`. This is the complete workspace `package.json` for this Angular version. It must contain all Angular version-specific `dependencies`, `devDependencies`, and `scripts`.
 3. Add `./versions/ngXX/angular.json`. This is the complete Angular workspace configuration for this version.
-4. Add `./versions/ngXX/package.iots.json` and `./versions/ngXX/package.zod.json`. These are the complete `package.json` files for the io-ts and zod libraries respectively. The `peerDependencies` section must list `@angular/core` and `@angular/common` with versions following `>=XX.0.0 <YY.0.0` pattern, where `XX` is the current and `YY` is the next Angular version. E.g. `>=20.0.0 <21.0.0`.
+4. Add `./versions/ngXX/iots-package.json` and `./versions/ngXX/zod-package.json`. These are the complete `package.json` files for the io-ts and zod libraries respectively. The `peerDependencies` section must list `@angular/core` and `@angular/common` with the range `>=16.0.0 <YY.0.0`, where `YY` is one above the newly added Angular version (e.g. adding ng22 → `>=16.0.0 <23.0.0`).
 5. Add `./versions/ngXX/files.json`. This manifest declares **all** files that should be copied from the version directory into the workspace directory when `prepws:ngXX` runs. It must include entries for `package.json`, `angular.json`, the library package files, and any other version-specific files such as ESLint config, TypeScript types, test setup, spec files, and tsconfig overrides. It follows this format:
    ```json
    {
@@ -36,10 +36,8 @@ Contributions are welcome! Please follow these high-level steps:
        { "from": "eslint.config.js", "to": "eslint.config.js" },
        { "from": "angular.json", "to": "angular.json" },
        { "from": "package.json", "to": "package.json" },
-       { "from": "package.iots.json", "to": "projects/typesafe-http-iots/package.json" },
-       { "from": "package.zod.json", "to": "projects/typesafe-http-zod/package.json" },
-       { "from": "http-options-base.type.ts", "to": "projects/typesafe-http-iots/src/lib/types/http-options-base.type.ts" },
-       { "from": "http-options-base.type.ts", "to": "projects/typesafe-http-zod/src/lib/types/http-options-base.type.ts" }
+       { "from": "iots-package.json", "to": "projects/typesafe-http-iots/package.json" },
+       { "from": "zod-package.json", "to": "projects/typesafe-http-zod/package.json" }
      ]
    }
    ```
@@ -94,24 +92,18 @@ npm run build:lib
 
 ### Publishing a library
 
-Before publishing, manually update the `version` field in the built library's `package.json` files to append the Angular version postfix:
+Build both libraries using the release script (runs `prepws:ng21` then builds):
 
 ```bash
-# Append -ngXX (e.g. "-ng21") to version in dist output
-sed -i '' 's/"version": "2.0.0"/"version": "2.0.0-ngXX"/' workspace/dist/typesafe-http-iots/package.json
+npm run build:release
 ```
 
-Then publish with the Angular version tag:
+Then publish from the workspace:
 
 ```bash
 cd workspace
-npm run publish:iots -- --tag ngXX
-```
-
-Once the **latest Angular version** package is live, move the `latest` tag to it:
-
-```bash
-npm dist-tag add @peppierre/typesafe-http-iots@2.0.0-ngXX latest
+npm run publish:iots
+npm run publish:zod
 ```
 
 ### Manual testing of library
