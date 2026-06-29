@@ -1,23 +1,28 @@
 import * as iots from 'io-ts';
-import { HttpOptionsBase } from './http-options-base.type';
+import { HttpClient } from '@angular/common/http';
+
+type HttpOptionsBase = Omit<
+  NonNullable<Parameters<HttpClient['get']>[1]>,
+  'responseType' | 'observe'
+> & { body?: unknown };
 
 // --- Generalized Body/Events/Response Options ---
-type ArrayBufferBodyOptionsBase = HttpOptionsBase<'arraybuffer'> & { observe?: 'body' | undefined };
-type ArrayBufferEventsOptionsBase = HttpOptionsBase<'arraybuffer'> & { observe: 'events' };
-type ArrayBufferResponseOptionsBase = HttpOptionsBase<'arraybuffer'> & { observe: 'response' };
-type BlobBodyOptionsBase = HttpOptionsBase<'blob'> & { observe?: 'body' | undefined };
-type BlobEventsOptionsBase = HttpOptionsBase<'blob'> & { observe: 'events' };
-type BlobResponseOptionsBase = HttpOptionsBase<'blob'> & { observe: 'response' };
-type TextBodyOptionsBase = HttpOptionsBase<'text'> & { observe?: 'body' | undefined };
-type TextEventsOptionsBase = HttpOptionsBase<'text'> & { observe: 'events' };
-type TextResponseOptionsBase = HttpOptionsBase<'text'> & { observe: 'response' };
-type JsonBodyOptionsBase = HttpOptionsBase<'json' | undefined> & { observe?: 'body' | undefined };
-type JsonEventsOptionsBase = HttpOptionsBase<'json' | undefined> & { observe: 'events' };
-type JsonResponseOptionsBase = HttpOptionsBase<'json' | undefined> & { observe: 'response' };
+type ArrayBufferBodyOptionsBase    = HttpOptionsBase & { responseType?: 'arraybuffer'; observe?: 'body' | undefined };
+type ArrayBufferEventsOptionsBase   = HttpOptionsBase & { responseType?: 'arraybuffer'; observe: 'events' };
+type ArrayBufferResponseOptionsBase = HttpOptionsBase & { responseType?: 'arraybuffer'; observe: 'response' };
+type BlobBodyOptionsBase           = HttpOptionsBase & { responseType?: 'blob'; observe?: 'body' | undefined };
+type BlobEventsOptionsBase          = HttpOptionsBase & { responseType?: 'blob'; observe: 'events' };
+type BlobResponseOptionsBase        = HttpOptionsBase & { responseType?: 'blob'; observe: 'response' };
+type TextBodyOptionsBase           = HttpOptionsBase & { responseType?: 'text'; observe?: 'body' | undefined };
+type TextEventsOptionsBase          = HttpOptionsBase & { responseType?: 'text'; observe: 'events' };
+type TextResponseOptionsBase        = HttpOptionsBase & { responseType?: 'text'; observe: 'response' };
+type JsonBodyOptionsBase           = HttpOptionsBase & { responseType?: 'json' | undefined; observe?: 'body' | undefined };
+type JsonEventsOptionsBase          = HttpOptionsBase & { responseType?: 'json' | undefined; observe: 'events' };
+type JsonResponseOptionsBase        = HttpOptionsBase & { responseType?: 'json' | undefined; observe: 'response' };
 
 // --- Generalized Typed Options for Json (io-ts) ---
-type JsonTypedOptionsBase<T> = JsonBodyOptionsBase & { runtimeType: iots.Type<T, unknown, unknown> };
-type JsonEventsTypedOptionsBase<T> = JsonEventsOptionsBase & { runtimeType: iots.Type<T, unknown, unknown> };
+type JsonTypedOptionsBase<T>         = JsonBodyOptionsBase & { runtimeType: iots.Type<T, unknown, unknown> };
+type JsonEventsTypedOptionsBase<T>   = JsonEventsOptionsBase & { runtimeType: iots.Type<T, unknown, unknown> };
 type JsonResponseTypedOptionsBase<T> = JsonResponseOptionsBase & { runtimeType: iots.Type<T, unknown, unknown> };
 
 // --- Aliases for Specific HTTP Verbs ---
