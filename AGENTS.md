@@ -23,9 +23,8 @@ Each library exposes a single injectable service, `TypesafeHttpService`, which m
       files.json          manifest: which files to copy and where inside workspace/
       package.json        workspace-level deps for this Angular version
       angular.json        Angular CLI workspace config for this version
-      iots-package.json   library package.json for iots (peerDeps pinned to this version)
+      iots-package.json   library package.json for iots (peerDeps >=16.0.0 <22.0.0)
       zod-package.json    library package.json for zod
-      http-options-base.type.ts  version-specific HttpOptionsBase interface
       *.spec.ts           test files (prefixed iots- / zod-)
       tsconfig*.json      TypeScript / test runner configs
   workspace/              Angular workspace — the only place you edit library source
@@ -33,8 +32,7 @@ Each library exposes a single injectable service, `TypesafeHttpService`, which m
       typesafe-http-iots/src/lib/
         typesafe-http.service.ts       core service (io-ts variant)
         provide.util.ts                provideTypesafeHttp() helper
-        types/http-options.type.ts     all overload option types
-        types/http-options-base.type.ts  base interface (overwritten by prepws)
+        types/http-options.type.ts     all overload option types (version-agnostic)
       typesafe-http-zod/src/lib/       identical structure, zod variant
     dist/                 build output (not committed)
   sample-apps/
@@ -88,11 +86,12 @@ npm run build:lib      # builds both iots and zod
 ```
 Version is auto-synced from root `package.json` before each build.
 
-### Publish
+### Build and publish (from repo root)
 ```bash
-# From workspace/
-npm run publish:iots -- --tag ngXX
-npm run publish:zod  -- --tag ngXX
+npm run build:release   # runs prepws:ng21 + build:lib
+cd workspace
+npm run publish:iots
+npm run publish:zod
 ```
 
 ### Manual integration test (from repo root)
@@ -124,8 +123,8 @@ Only one Angular version may be removed per release.
 
 ## Adding a new Angular version (checklist)
 
-1. Create `versions/ngXX/` with: `package.json`, `angular.json`, `iots-package.json`, `zod-package.json`, `files.json`, `http-options-base.type.ts`, tsconfig files, spec files.
-2. In `iots-package.json` and `zod-package.json`, set `peerDependencies` `@angular/core`/`@angular/common` to `>=XX.0.0 <YY.0.0`.
+1. Create `versions/ngXX/` with: `package.json`, `angular.json`, `iots-package.json`, `zod-package.json`, `files.json`, tsconfig files, spec files.
+2. In `iots-package.json` and `zod-package.json`, set `peerDependencies` `@angular/core`/`@angular/common` to `>=16.0.0 <YY.0.0` where `YY` is one above the newly added version.
 3. Register all copied files in `versions/ngXX/files.json`.
 4. Add `prepws:ngXX` script to root `package.json`.
 5. Bump root `package.json` to next major version.
@@ -139,4 +138,4 @@ Only one Angular version may be removed per release.
 
 The typed overloads (e.g., `get<T>(url, { runtimeType: MY_SCHEMA })`) are the primary public API. Non-typed overloads (returning `object`) pass through without validation.
 
-`HttpOptionsBase` is version-specific because Angular adds new fetch-API fields (`credentials`, `priority`, `cache`, etc.) across versions.
+`HttpOptionsBase` no longer exists as a hand-written interface. Each HTTP method has its own base type derived via `Parameters<HttpClient['METHOD']>[N]` (index 1 for url-only methods, 2 for url+body methods). The `Omit<..., 'responseType' | 'observe'>` strip lets concrete option types re-add those fields with specific literal values. Because the derivation lives in the emitted `.d.ts`, it resolves against the **consumer's** installed Angular version at their compile time — narrower on ng16, full fetch-API fields on ng21+.
